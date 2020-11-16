@@ -27,7 +27,7 @@ LiB2=np.array(LB2)
 # segundo plot
 Maximos2=np.max(volt2,0)
 PSP2=Maximos2-LiB2
-unos2=np.ones_like(LiB2)
+unos2=np.ones_like(LiB2)*2
 
 datos=np.loadtxt('data/Exp3a.csv', delimiter=",", skiprows=1)
 tiempo3=datos[:,0]
@@ -39,7 +39,7 @@ LiB3=np.array(LB3)
 # segundo plot
 Maximos3=np.max(volt3,0)
 PSP3=Maximos3-LiB3
-unos3=np.ones_like(LiB3)
+unos3=np.ones_like(LiB3)*3
 
 
 datos=np.loadtxt('data/Exp4a.csv', delimiter=",", skiprows=1)
@@ -52,7 +52,7 @@ LiB4=np.array(LB4)
 # segundo plot
 Maximos4=np.max(volt4,0)
 PSP4=Maximos4-LiB4
-unos4=np.ones_like(LiB4)
+unos4=np.ones_like(LiB4)*4
 
 datos=np.loadtxt('data/Exp5a.csv', delimiter=",", skiprows=1)
 tiempo5=datos[:,0]
@@ -64,7 +64,7 @@ LiB5=np.array(LB5)
 # segundo plot
 Maximos5=np.max(volt5,0)
 PSP5=Maximos5-LiB5
-unos5=np.ones_like(LiB5)
+unos5=np.ones_like(LiB5)*5
 
 
 
@@ -75,17 +75,23 @@ PS = {'P1':PSP1,'P2':PSP2,'P3':PSP3,'P4':PSP4,'P5':PSP5}
 un_ = {'unos1': unos1, 'unos2': unos2, 'unos3': unos3, 'unos4': unos4, 'unos5': unos5}
 
 
-# paint out points
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+
 dodgerblue_diamond = dict(markerfacecolor='dodgerblue', marker='D')
-
-# ax.plot(un_.values(), my_dict.values(),color='dodgerblue',marker='D')
-
-#-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
-
 fig, ax = plt.subplots()
 ax.boxplot(my_dict.values(), flierprops=dodgerblue_diamond)
+
+plt.plot(unos1,LiB1,color='dodgerblue',marker='D')
+plt.plot(unos2,LiB2,color='orange',marker='D')
+plt.plot(unos3,LiB3,color='limegreen',marker='D')
+plt.plot(unos4,LiB4,color='red',marker='D')
+plt.plot(unos5,LiB5,color='mediumpurple',marker='D')
+
 ax.set_xticklabels(my_dict.keys())
+
 plt.ylabel("Baseline voltage (mV)")
 plt.xlabel("Condition")
 show()
@@ -93,9 +99,18 @@ show()
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
+dodgerblue_diamond = dict(markerfacecolor='dodgerblue', marker='D')
 fig, ax = plt.subplots()
 ax.boxplot(PS.values(), flierprops=dodgerblue_diamond)
-plt.ylabel("Baseline voltage (mV)")
-plt.xlabel("Condition")
+
+plt.plot(unos1,PSP1,color='dodgerblue',marker='D')
+plt.plot(unos2,PSP2,color='orange',marker='D')
+plt.plot(unos3,PSP3,color='limegreen',marker='D')
+plt.plot(unos4,PSP4,color='red',marker='D')
+plt.plot(unos5,PSP5,color='mediumpurple',marker='D')
+
 ax.set_xticklabels(my_dict.keys())
+
+plt.ylabel("PSP amplitude (mV)")
+plt.xlabel("Condition")
 show()
