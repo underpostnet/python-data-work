@@ -6,8 +6,8 @@ import random
 #-------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------
 
-# a: cantidad de publicaciones registradas diarias
-# b: cantidad de ventas registradas diarias
+# x: cantidad de publicaciones por dias seleccionadas por mes
+# y: cantidad de ventas por dias seleccionadas por mes
 # numero, dia, publicaciones, ventas
 
 #-------------------------------------------------------------------------------------------------
