@@ -13,6 +13,8 @@ import random
 #-------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------
 
+print('seleccion de datos aleatorios estratificados por mes:')
+
 data_agosto = np.loadtxt("data_mes/agosto.csv", delimiter=";", skiprows=1, usecols=[0,2,3,4], unpack=True)
 
 list = []
@@ -22,7 +24,7 @@ for i in range(len(data_agosto[0])):
 
 choose_agosto = random.sample(list,  13)
 choose_agosto.sort()
-print(choose_agosto)
+print('agosto: ',choose_agosto)
 
 filter_agosto_ventas = []
 filter_agosto_publicaciones = []
@@ -44,7 +46,7 @@ for i in range(len(data_julio[0])):
 
 choose_julio = random.sample(list,  13)
 choose_julio.sort()
-print(choose_julio)
+print('julio: ',choose_julio)
 
 filter_julio_ventas = []
 filter_julio_publicaciones = []
@@ -65,7 +67,7 @@ for i in range(len(data_junio[0])):
 
 choose_junio = random.sample(list,  14)
 choose_junio.sort()
-print(choose_junio)
+print('junio: ',choose_junio)
 
 filter_junio_ventas = []
 filter_junio_publicaciones = []
@@ -86,7 +88,7 @@ for i in range(len(data_mayo[0])):
 
 choose_mayo = random.sample(list,  14)
 choose_mayo.sort()
-print(choose_mayo)
+print('mayo: ',choose_mayo)
 
 filter_mayo_ventas = []
 filter_mayo_publicaciones = []
@@ -107,7 +109,7 @@ for i in range(len(data_septiembre[0])):
 
 choose_septiembre = random.sample(list,  14)
 choose_septiembre.sort()
-print(choose_septiembre)
+print('septiembre: ',choose_septiembre)
 
 filter_septiembre_ventas = []
 filter_septiembre_publicaciones = []
@@ -367,7 +369,9 @@ print("Coeficiente de determinación R^2:", modelo.score(X, y))
 # Error de test del modelo
 # ==============================================================================
 predicciones = modelo.predict(X = X_test)
-print(predicciones[0:3,])
+print('evaluacion de la capacidad predictiva:')
+print(predicciones)
+print('')
 
 rmse = mean_squared_error(
         y_true  = y_test,
@@ -401,7 +405,10 @@ print(modelo.summary())
 
 # Intervalos de confianza para los coeficientes del modelo
 # ==============================================================================
-modelo.conf_int(alpha=0.05)
+print('')
+print('Intervalos de confianza para los coeficientes del modelo')
+print(modelo.conf_int(alpha=0.05))
+print('')
 
 
 # Predicciones:
