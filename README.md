@@ -10,6 +10,3 @@ Using:
 
 
 pip install numpy==1.19.3
-
-
-test
