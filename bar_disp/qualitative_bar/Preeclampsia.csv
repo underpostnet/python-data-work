@@ -1,0 +1,6 @@
+ML;AUC
+Bayes ingenuo;0.735
+Adaboost;0.770
+RN;0.908
+SVM;0.958
+J48;0.748

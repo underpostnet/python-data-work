@@ -1,0 +1,19 @@
+Prediccion;ML;AUC;sensibilidad;especificidad;precision
+Preeclampsia;Bayes ingenuo;0.735;0.481;0.944;0.512
+Preeclampsia;Adaboost;0.770;0.88;0.92
+Preeclampsia;Redes neuronales;0.908
+Preeclampsia;SVM; 0.958;0.544;0.667;0.892
+Preeclampsia;J48;0.748;0.6;;0.512
+Preeclampsia;Regresión logística;;0.703;;0.862
+Preeclampsia;Arbol decision;;0.648;;0.874
+Preeclampsia;Bosque aleatorio;;0.679;;0.899
+Preeclampsia;Máquina aumento gradiente;;0.603;;0.973
+Prematurez;Autocodificador disperso apilado;0.900;0.92;0.88;0.9
+Prematurez;SVM;0.896;0.932;0.875;0.85
+Prematurez;Máquina aprendizaje extrema;0.840;0.80;0.88;0.83
+Prematurez;Regresión logística;0.738;0.56;0.625
+Prematurez;SVM + RF;0.68;;;0.81
+Prematurez;RL + RF + MAG continuo;0.868;0.989
+Prematurez;RL + RG + MAG binario;0.878;0.902
+Prematurez;PCA + SVM;;;;0.833
+Prematurez;RQA + SVM;;;;0.793
