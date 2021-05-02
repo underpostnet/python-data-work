@@ -51,33 +51,45 @@ print('targets_test ->')
 print(targets_test)
 
 pat_training = []
+pat_training0 = []
 for fila, columna in features.iterrows():
-    pat_training.append([[
+    add = [
     columna[0],
     columna[1],
     columna[2],
     columna[3],
     columna[4],
-    columna[5]]])
+    columna[5]
+    ]
+    pat_training.append([add])
+    pat_training0.append(add)
 
 pat_test = []
+pat_test0 = []
 for fila, columna in features_test.iterrows():
-    pat_test.append([[
+    add = [
     columna[0],
     columna[1],
     columna[2],
     columna[3],
     columna[4],
-    columna[5]]])
+    columna[5]
+    ]
+    pat_test.append([add])
+    pat_test0.append(add)
 
 index = 0
+targets0 = [[]]
 for val in targets:
     pat_training[index].append([val])
+    targets0[0].append(val)
     index = index + 1
 
 index = 0
+targets_test0 = [[]]
 for val in targets_test:
     pat_test[index].append([val])
+    targets_test0[0].append(val)
     index = index + 1
 
 
