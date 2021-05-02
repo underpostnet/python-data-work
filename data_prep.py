@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 
+# https://stats.idre.ucla.edu/r/dae/logit-regression/
+
 admissions = pd.read_csv('binary.csv')
 
 print('admissions ->')
