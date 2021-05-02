@@ -50,7 +50,40 @@ print(features_test)
 print('targets_test ->')
 print(targets_test)
 
+pat_training = []
+for fila, columna in features.iterrows():
+    pat_training.append([[
+    columna[0],
+    columna[1],
+    columna[2],
+    columna[3],
+    columna[4],
+    columna[5]]])
 
+pat_test = []
+for fila, columna in features_test.iterrows():
+    pat_test.append([[
+    columna[0],
+    columna[1],
+    columna[2],
+    columna[3],
+    columna[4],
+    columna[5]]])
+
+index = 0
+for val in targets:
+    pat_training[index].append([val])
+    index = index + 1
+
+index = 0
+for val in targets_test:
+    pat_test[index].append([val])
+    index = index + 1
+
+
+# print(pat_training)
+
+# print(pat_test)
 
 
 
