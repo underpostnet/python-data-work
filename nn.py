@@ -157,15 +157,11 @@ def demo():
     ]
 
     # create a network with two input, two hidden, and one output nodes
-    n = NN(6, 4, 1)
+    n = NN(2, 2, 1)
     # train it with some patterns
-    n.train(pat_training)
-    n.train(pat_training)
-    n.train(pat_training)
-    n.train(pat_training)
-    n.train(pat_training)
+    n.train(pat)
     # test it
-    n.test(pat_test)
+    n.test(pat)
 
 
 
