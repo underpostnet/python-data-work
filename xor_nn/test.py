@@ -2,9 +2,9 @@ import numpy as np
 
 X= np.array([[0,0],[0,1],[1,0],[1,1]])
 Y= np.array([[0,1,1,0]]).T
-print ("Input")
+print ("\n Input")
 print(X)
-print ("\nOutput")
+print ("\n Output")
 print(Y)
 
 m=X.shape[0]
