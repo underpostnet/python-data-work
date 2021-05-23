@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.pyplot import show
 
 
-# A = np.array([
+# A = np.matrix([
 #     [0.997316607,0.002690613,0,0,0],
 #     [0.004023071,0.99286855,0.003146941,0,0],
 #     [0,0,0.008602793,0.988442309,0.003063684],
@@ -42,7 +42,7 @@ for fila in A:
     cont_y = cont_y + 1
 
 print('post fix A ->')
-print(np.array(new_A))
+print(new_A)
 
 A = new_A
 
@@ -60,7 +60,7 @@ t0 = 5000
 tf = 6000
 
 
-I = np.array([
+I = np.matrix([
      [1,0,0,0,0],
      [0,1,0,0,0],
      [0,0,1,0,0],
@@ -76,13 +76,13 @@ for val in t:
 print('h ->')
 print(h)
 
-Lt = [
+Lt = np.matrix([
      [1,0,0,0,0],
      [0,1,0,0,0],
      [0,0,1,0,0],
      [0,0,0,1,0],
      [0,0,0,0,1]
-];
+])
 
 sum_limit = 600
 plot_matriz = []
@@ -96,24 +96,57 @@ while sum_limit <= 2500:
         H = []
         for val in t:
 
-            exp_a = (delta/n)**(b)
-            exp_c = (i)**( ( b - (i+1)**(b) ) )
-            exp_b =  np.exp((w*val))**exp_c
+            # exp_a = (delta/n)**(b)
+            # exp_c = (i)**( ( b - (i+1)**(b) ) )
+            # exp_b =  np.exp((w*val))**exp_c
+            # hazard = np.exp((exp_a*exp_b))
 
-            hazard = np.exp((exp_a*exp_b))
+            exp_a = (delta/n)**(b)
+            exp_c = (i)**b - (i+1)**b
+            exp_b =  np.exp((w*val))
+
+            hazard = np.exp((exp_a*exp_b))**exp_c
+
             H.append(hazard)
 
-        mh = H * I
-        Li = mh * A
+
+
+        #--------------------------------------
+
+        ind = 0
+        new_H = []
+        for x in range(len(H)):
+            fila_ = []
+            for y in range(len(H)):
+                if x==y:
+                    fila_.append(H[ind])
+                    ind = ind + 1
+                else:
+                    fila_.append(0)
+
+            new_H.append(fila_)
+
+        H = np.matrix(new_H)
+
+        #--------------------------------------
+
+
+        # mh = H * I
+        Li = H * A
         Lt = Lt * Li
         # print('Li ', i, ' ->')
         # print(Li)
 
+        # print('Lt ', i, ' ->')
+        # print(Lt)
+
         if i == (sum_limit-1):
+            print('Lt ', i, ' ->')
+            print(Lt)
             suma_Lt = []
             for fila in Lt:
                 total_suma = 0
-                for val_fila in fila:
+                for val_fila in fila.tolist()[0]:
                      total_suma = total_suma + val_fila
                 suma_Lt.append(total_suma)
 
@@ -149,6 +182,10 @@ color_ = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
 print(color_)
 
 cont_serie = 0
+
+print('bug ->')
+print(plot_matriz)
+
 for generate_plot in plot_matriz:
     plt.plot(plot_axis_x, generate_plot, 'k', label=('{}{}'.format('Estado ', cont_serie)), color=color_[(cont_serie-1)])
     cont_serie = cont_serie + 1
