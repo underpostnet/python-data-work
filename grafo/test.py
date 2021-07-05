@@ -7,11 +7,11 @@ G.add_edges_from(
     [('A', 'B'), ('A', 'C'), ('D', 'B'), ('E', 'C'), ('E', 'F'),
      ('B', 'H'), ('B', 'G'), ('B', 'F'), ('C', 'G')])
 
-val_map = {'A': 1.0,
-           'D': 0.5714285714285714,
-           'H': 0.0}
+val_map = {'A': 1,
+           'D': 1,
+           'H': 1}
 
-values = [val_map.get(node, 0.25) for node in G.nodes()]
+values = [val_map.get(node, 0.5) for node in G.nodes()]
 
 # Specify the edges you want here
 red_edges = [('A', 'C'), ('E', 'C')]
