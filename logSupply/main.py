@@ -20,7 +20,7 @@ rewardPerBlock = []
 intervalChangeEraBlock = 210000
 totalEra = 32
 
-sumBlocks = 0;
+sumBlocks = 0
 for i in range(0, totalEra):
     era.append(i)
     y = (intervalChangeEraBlock*((50*(10**8))/(2**i)))/(10**8)
@@ -35,7 +35,7 @@ for i in reward:
 
 print('reward ->')
 print(reward)
-print('blocks ->');
+print('blocks ->')
 print(blocks)
 print('rewardPerBlock ->')
 print(rewardPerBlock)
