@@ -24,7 +24,7 @@ for row, column in df.iterrows():
         row.append(0)
 
 
-    for i in range(2, 15):
+    for i in range(2, 16):
         if column[i]=='Yes':
             row.append(1)
         else:
@@ -203,7 +203,7 @@ def demo():
 
     ind = 0
     for dat in data:
-        pat.append([dat, [result[ind]]]);
+        pat.append([dat, [result[ind]]])
         ind += 1
 
     # print(pat)
@@ -217,6 +217,47 @@ def demo():
     n.train(pat)
     # test it
     n.test(pat)
+
+
+    #  | 0 -> 0.5 |  0.5 -> 1 |
+    #  pat.append([array_input, [class]]);
+
+    while True:
+
+        # pat = [None] * 2
+
+        pat = []
+        array_input = []
+
+        print('start Neural Network calculator')
+
+        array_input.append(int(input("Gender: ")))
+        array_input.append(int(input("Polyuria: ")))
+        array_input.append(int(input("Polydipsia: ")))
+        array_input.append(int(input("sudden weight loss: ")))
+        array_input.append(int(input("weakness: ")))
+        array_input.append(int(input("Polyphagia: ")))
+        array_input.append(int(input("Genital thrush: ")))
+        array_input.append(int(input("visual blurring: ")))
+        array_input.append(int(input("Itching: ")))
+        array_input.append(int(input("Irritability: ")))
+        array_input.append(int(input("delayed healing: ")))
+        array_input.append(int(input("partial paresis: ")))
+        array_input.append(int(input("muscle stiffness: ")))
+        array_input.append(int(input("Alopecia: ")))
+        array_input.append(int(input("Obesity: ")))
+
+
+
+        pat.append([array_input, []]);
+
+        print("input ->")
+        print(pat)
+
+        n.test(pat)
+
+
+
 
 
 
