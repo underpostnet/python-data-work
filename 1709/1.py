@@ -23,6 +23,8 @@ df=df.mask((  (df==0) & (df.columns != 'Pregnancies') & (df.columns != 'Outcome'
 # print(df)
 
 corr_df = df.corr(method='pearson')
+# https://matplotlib.org/stable/tutorials/colors/colormaps.html
+# corr_df.style.background_gradient(cmap='Blues')
 
 plt.matshow(corr_df)
 sns.heatmap(corr_df, annot=True)
