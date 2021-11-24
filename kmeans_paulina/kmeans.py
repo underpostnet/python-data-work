@@ -5,17 +5,19 @@ import pandas as pd
 def isNaN(num):
     return num != num
 
-df = pd.read_csv("datos.csv", sep=";", skip_blank_lines=False)
+df = pd.read_csv("datos_.csv", sep=";", skip_blank_lines=False)
 
 
 x_data = []
 trial = []
+fail = []
 
 for row, column in df.iterrows():
 
 
     x_data.append(column[1])
     trial.append(column[0])
+    fail.append(column[2])
 
 print(x_data)
 print(trial)
@@ -205,6 +207,95 @@ next_column.append(0)
 
 df['Nex States'] = next_column
 
+
+data_fix = np.array(df);
+
+#   1 - 1    1 - 2    1 - 3
+#   2 - 1    2 - 2    2 - 3
+#   3 - 1    3 - 2    3 - 3
+
+dim_ = 3
+final_matrix = []
+
+for x_ in range(1, dim_+1):
+    case = []
+    for y_ in range(1, dim_+1):
+        sum = 0
+        for d_ in data_fix:
+            if d_[7]==x_ and d_[8]==y_:
+                sum += 1
+
+        case.append(sum)
+
+    final_matrix.append(case)
+
+
+print(" sum matrix change ->")
+print(np.array(final_matrix))
+
+df['fail'] = fail
+
+f_1 = 0
+f_2 = 0
+f_3 = 0
+data_fix = np.array(df);
+
+for d_ in data_fix:
+
+    if d_[7] == 1:
+        f_1 += d_[9]
+
+    if d_[7] == 2:
+        f_2 += d_[9]
+
+    if d_[7] == 3:
+        f_3 += d_[9]
+
+print(" f1 -> ")
+print(f_1)
+print(" f2 -> ")
+print(f_2)
+print(" f3 -> ")
+print(f_3)
+
+
+matrix_dix = []
+for x_ in range(0, dim_):
+    case = []
+    for y_ in range(0, dim_):
+        if x_ != y_:
+            if x_ == 0:
+                case.append(final_matrix[x_][y_]/f_1)
+
+            if x_ == 1:
+                case.append(final_matrix[x_][y_]/f_2)
+
+            if x_ == 2:
+                case.append(final_matrix[x_][y_]/f_3)
+        else:
+            case.append(0)
+
+    matrix_dix.append(case);
+
+print(" matrix div ->")
+
+matrix_dix[0][0] = -1*(matrix_dix[0][1] + matrix_dix[0][2])
+matrix_dix[1][1] = -1*(matrix_dix[1][0] + matrix_dix[1][2])
+matrix_dix[2][2] = -1*(matrix_dix[2][0] + matrix_dix[2][1])
+
+from math import e
+
+for x_ in range(0, dim_):
+    case = []
+    for y_ in range(0, dim_):
+        if x_ != y_:
+            matrix_dix[x_][y_] = (e**matrix_dix[x_][y_]) - 1
+        else:
+            matrix_dix[x_][y_] = (e**matrix_dix[x_][y_])
+
+
+
+print(np.array(matrix_dix))
 
 print(df)
 
