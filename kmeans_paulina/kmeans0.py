@@ -264,24 +264,32 @@ for x_ in range(0, dim_):
     case = []
     for y_ in range(0, dim_):
         if x_ != y_:
-            if x_ == 0:
+            if y_ == 0:
                 case.append(final_matrix[x_][y_]/f_1)
 
-            if x_ == 1:
+            if y_ == 1:
+                # print('test ->')
+                # print(final_matrix[x_][y_])
+                # print('/')
+                # print(f_2)
                 case.append(final_matrix[x_][y_]/f_2)
 
-            if x_ == 2:
+            if y_ == 2:
                 case.append(final_matrix[x_][y_]/f_3)
         else:
             case.append(0)
 
     matrix_dix.append(case);
 
-print(" matrix div ->")
+print(" matrix div 1 ->")
+print(np.array(matrix_dix))
 
 matrix_dix[0][0] = -1*(matrix_dix[0][1] + matrix_dix[0][2])
 matrix_dix[1][1] = -1*(matrix_dix[1][0] + matrix_dix[1][2])
 matrix_dix[2][2] = -1*(matrix_dix[2][0] + matrix_dix[2][1])
+
+print(" matrix div 2 ->")
+print(np.array(matrix_dix))
 
 from math import e
 
@@ -296,12 +304,14 @@ for x_ in range(0, dim_):
 
 
 v = np.array(matrix_dix)
+print('v ->')
+print(v)
 
 delta=10
 A = np.exp((10**-4)*v*delta)
 
 print('pre fix A ->')
-print(A)
+print(np.array(A))
 
 cont_y = 1
 new_A = []
@@ -320,7 +330,7 @@ for fila in A:
     cont_y = cont_y + 1
 
 print('post fix A ->')
-print(new_A)
+print(np.array(new_A))
 
 A = new_A
 
