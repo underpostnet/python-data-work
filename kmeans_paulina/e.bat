@@ -4,4 +4,4 @@
 :: python main.py
 
 
-python kmeans0.py
+python main00.py
