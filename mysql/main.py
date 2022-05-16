@@ -93,13 +93,16 @@ def readTables():
 
 readTables()
 
-
-
 # eliminar clientes
 
+def deltData():
+    sql = "DELETE FROM clientes WHERE nombre = 'Ayleen'"
+    mycursor.execute(sql)
+    mydb.commit()
+    print(mycursor.rowcount, "record(s) deleted")
 
 
-
-
+# deltData()
+# readTables()
 
 # end
