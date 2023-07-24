@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 # Preprocesado y modelado
 # ------------------------------------------------------------------------------
-from sklearn.datasets import load_boston
+# from sklearn.datasets import load_boston
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.tree import plot_tree
@@ -28,9 +28,9 @@ warnings.filterwarnings('once')
 # Se unen todos los datos (predictores y variable respuesta en un único dataframe)
 # boston = load_boston(return_X_y=False)
 # datos = np.column_stack((boston.data, boston.target))
-# datos = pd.DataFrame(datos,columns = np.append(boston.feature_names, "Outcome"))
-data = pd.read_csv('./data/diabetes.csv')
-data = data.mask((  (data==0) & (data.columns != 'Pregnancies') & (data.columns != 'Outcome') )).fillna(data.mean())
+# datos = pd.DataFrame(datos,columns = np.append(boston.feature_names, "COMPLICACIONES_SINO"))
+data = pd.read_csv('./data/COMPLICACIONES_en.csv')
+data = data.mask((  (data==0) & (data.columns != 'COMPLICACIONES_SINO') )).fillna(data.mean()) # & (data.columns != 'Pregnancies') 
 datos = data;
 
 datos.head(3)
@@ -42,8 +42,8 @@ print(datos)
 # División de los datos en train y test
 # ------------------------------------------------------------------------------
 X_train, X_test, y_train, y_test = train_test_split(
-                                        datos.drop(columns = "Outcome"),
-                                        datos['Outcome'],
+                                        datos.drop(columns = "COMPLICACIONES_SINO"),
+                                        datos['COMPLICACIONES_SINO'],
                                         random_state = 123
                                     )
 # Creación del modelo
@@ -67,8 +67,8 @@ print(f"Número de nodos terminales: {modelo.get_n_leaves()}")
 
 plot = plot_tree(
             decision_tree = modelo,
-            feature_names = datos.drop(columns = "Outcome").columns,
-            class_names   = 'Outcome',
+            feature_names = datos.drop(columns = "COMPLICACIONES_SINO").columns,
+            class_names   = 'COMPLICACIONES_SINO',
             filled        = True,
             impurity      = False,
             fontsize      = 10,
@@ -84,7 +84,7 @@ show()
 
 
 importancia_predictores = pd.DataFrame(
-                            {'predictor': datos.drop(columns = "Outcome").columns,
+                            {'predictor': datos.drop(columns = "COMPLICACIONES_SINO").columns,
                              'importancia': modelo.feature_importances_}
                             )
 print("Importancia de los predictores en el modelo")

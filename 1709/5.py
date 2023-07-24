@@ -8,10 +8,10 @@ import webbrowser
 
 # https://www.kaggle.com/dansbecker/permutation-importance/tutorial
 
-data = pd.read_csv('./data/diabetes.csv')
-data=data.mask((  (data==0) & (data.columns != 'Pregnancies') & (data.columns != 'Outcome') )).fillna(data.mean())
+data = pd.read_csv('./data/complicaciones.csv')
+data=data.mask((  (data==0) & (data.columns != 'COMPLICACIONES_SINO') )).fillna(data.mean()) #  & (data.columns != 'Pregnancies')
 
-y =(data['Outcome'] == 1)
+y =(data['COMPLICACIONES_SINO'] == 1)
 
 # data = pd.read_csv('./data/fifa.csv')
 # y = (data['Man of the Match'] == "Yes")  # Convert from string "Yes"/"No" to binary
@@ -34,6 +34,10 @@ import eli5
 from eli5.sklearn import PermutationImportance
 
 perm = PermutationImportance(my_model, random_state=1).fit(val_X, val_y)
+
+print(eli5.format_as_text(eli5.explain_weights(perm, feature_names = val_X.columns.tolist())))
+
+exit()
 
 render = eli5.show_weights(perm, feature_names = val_X.columns.tolist())
 

@@ -4,13 +4,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import webbrowser
 
+# shap
 # data = pd.read_csv('./data/fifa.csv')
 # y = (data['Man of the Match'] == "Yes")  # Convert from string "Yes"/"No" to binary
 # feature_names = [i for i in data.columns if data[i].dtype in [np.int64, np.int64]]
 
-data = pd.read_csv('./data/diabetes.csv')
-data=data.mask((  (data==0) & (data.columns != 'Pregnancies') & (data.columns != 'Outcome') )).fillna(data.mean())
-y =(data['Outcome'] == 1)
+data = pd.read_csv('./data/COMPLICACIONES_en.csv')
+data=data.mask((  (data==0) & (data.columns != 'COMPLICACIONES_SINO')  )).fillna(data.mean()) # & (data.columns != 'Outcome')
+y =(data['COMPLICACIONES_SINO'] == 1)
 feature_names = [i for i in data.columns ]
 feature_names.pop()
 
